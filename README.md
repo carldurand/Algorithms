@@ -1,21 +1,35 @@
-React and Redux: Map Dispatch to Props
-The mapDispatchToProps() function is used to provide specific action creators to your React components so they can dispatch actions against the Redux store. It's similar in structure to the mapStateToProps() function you wrote in the last challenge. It returns an object that maps dispatch actions to property names, which become component props. However, instead of returning a piece of state, each property returns a function that calls dispatch with an action creator and any relevant action data. You have access to this dispatch because it's passed in to mapDispatchToProps() as a parameter when you define the function, just like you passed state to mapStateToProps(). Behind the scenes, React Redux is using Redux's store.dispatch() to conduct these dispatches with mapDispatchToProps(). This is similar to how it uses store.subscribe() for components that are mapped to state.
+Algorithms: Find the Symmetric Difference
+Create a function that takes two or more arrays and returns an array of the symmetric difference (△ or ⊕) of the provided arrays.
 
-For example, you have a loginUser() action creator that takes a username as an action payload. The object returned from mapDispatchToProps() for this action creator would look something like:
+Given two sets (for example set A = {1, 2, 3} and set B = {2, 3, 4}), the mathematical term "symmetric difference" of two sets is the set of elements which are in either of the two sets, but not in both (A △ B = C = {1, 4}). For every additional symmetric difference you take (say on a set D = {2, 3}), you should get the set with elements which are in either of the two the sets but not both (C △ D = {1, 4} △ {2, 3} = {1, 2, 3, 4}). The resulting array must contain only unique values (no duplicates).
 
-{
-  submitLoginUser: function(username) {
-    dispatch(loginUser(username));
-  }
-}
-
-The code editor provides an action creator called addMessage(). Write the function mapDispatchToProps() that takes dispatch as an argument, then returns an object. The object should have a property submitNewMessage set to the dispatch function, which takes a parameter for the new message to add when it dispatches addMessage().
+Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write your own code.
 
 Passed
-addMessage should return an object with keys type and message.
+sym([1, 2, 3], [5, 2, 1, 4]) should return [3, 4, 5].
 Passed
-mapDispatchToProps should be a function.
+sym([1, 2, 3], [5, 2, 1, 4]) should contain only three elements.
 Passed
-mapDispatchToProps should return an object.
+sym([1, 2, 3, 3], [5, 2, 1, 4]) should return [3, 4, 5].
 Passed
-Dispatching addMessage with submitNewMessage from mapDispatchToProps should return a message to the dispatch function.
+sym([1, 2, 3, 3], [5, 2, 1, 4]) should contain only three elements.
+Passed
+sym([1, 2, 3], [5, 2, 1, 4, 5]) should return [3, 4, 5].
+Passed
+sym([1, 2, 3], [5, 2, 1, 4, 5]) should contain only three elements.
+Passed
+sym([1, 2, 5], [2, 3, 5], [3, 4, 5]) should return [1, 4, 5]
+Passed
+sym([1, 2, 5], [2, 3, 5], [3, 4, 5]) should contain only three elements.
+Passed
+sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5]) should return [1, 4, 5].
+Passed
+sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5]) should contain only three elements.
+Passed
+sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3]) should return [2, 3, 4, 6, 7].
+Passed
+sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3]) should contain only five elements.
+Passed
+sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3], [5, 3, 9, 8], [1]) should return [1, 2, 4, 5, 6, 7, 8, 9].
+Passed
+sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3], [5, 3, 9, 8], [1]) should contain only eight elements.
